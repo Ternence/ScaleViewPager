@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
+
+
+        findViewById(R.id.main_layout).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return mViewPager.dispatchTouchEvent(event);
+            }
+        });
+
 
         mPagerAdapter = new ViewPagerAdapter(this);
         mViewPager.setAdapter(mPagerAdapter);
