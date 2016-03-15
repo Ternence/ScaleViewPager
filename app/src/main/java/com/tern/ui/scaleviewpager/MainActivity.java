@@ -31,14 +31,12 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setPageTransformer(true, new ScalePageTransformer());
 
-
         findViewById(R.id.main_layout).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return mViewPager.dispatchTouchEvent(event);
             }
         });
-
 
         mPagerAdapter = new ViewPagerAdapter(this);
         mViewPager.setAdapter(mPagerAdapter);
@@ -84,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             }
             imageView.setTag(position);
             imageView.setImageResource(mList.get(position));
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             return imageView;
         }
 
